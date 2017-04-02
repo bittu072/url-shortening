@@ -4,6 +4,12 @@ from django.db import models
 
 class ShortenURL(models.Model):
     url = models.CharField(max_length=250,)
+    shorturl = models.CharField(max_length=15, unique=True)
+    # if you already have some data with field and then you add another field in database
+    # shorturl = models.CharField(max_length=15, null=True) # emty in database is ok
+    # or
+    # shorturl = models.CharField(max_length=15, default='abcd')
+    # or you can delete database and regenerate
 
     def __str__(self):
         return str(self.url)
