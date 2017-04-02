@@ -5,6 +5,8 @@ from django.db import models
 class ShortenURL(models.Model):
     url = models.CharField(max_length=250,)
     shorturl = models.CharField(max_length=15, unique=True)
+    updated = models.DateTimeField(auto_now=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     # if you already have some data with field and then you add another field in database
     # shorturl = models.CharField(max_length=15, null=True) # emty in database is ok
     # or
