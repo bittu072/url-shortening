@@ -1,6 +1,16 @@
 from django.db import models
 
+import random
+import string
+
 # Create your models here.
+
+def code_generator(size=10, chars=string.ascii_lowercase + string.ascii_uppercase):
+    # new_code = ''
+    # for i in range(size):
+    #     new_code += random.choice(chars)
+    # return new_code
+    return ''.join(random.choice(chars) for i in range(size))
 
 class ShortenURL(models.Model):
     url = models.CharField(max_length=250,)
@@ -12,6 +22,10 @@ class ShortenURL(models.Model):
     # or
     # shorturl = models.CharField(max_length=15, default='abcd')
     # or you can delete database and regenerate
+
+    def save(self, *args, **kwargs):
+        self.shorturl = code_generator()
+        super(ShortenURL, self).save(*args, **kwargs)
 
     def __str__(self):
         return str(self.url)
