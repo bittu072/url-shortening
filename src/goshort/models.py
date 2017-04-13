@@ -1,12 +1,12 @@
 from django.db import models
 
-from .utility import code_generator
+from .utility import code_generator, create_shorturl
 
 # Create your models here.
 
 class ShortenURL(models.Model):
     url = models.CharField(max_length=250,)
-    shorturl = models.CharField(max_length=15, unique=True)
+    shorturl = models.CharField(max_length=15, unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     # if you already have some data with field and then you add another field in database
@@ -17,7 +17,7 @@ class ShortenURL(models.Model):
 
     def save(self, *args, **kwargs):
         if self.shorturl is None or self.shorturl == "":
-            self.shorturl = code_generator()
+            self.shorturl = create_shorturl(self)
         super(ShortenURL, self).save(*args, **kwargs)
 
     def __str__(self):
