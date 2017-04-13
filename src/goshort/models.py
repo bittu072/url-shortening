@@ -16,7 +16,8 @@ class ShortenURL(models.Model):
     # or you can delete database and regenerate
 
     def save(self, *args, **kwargs):
-        self.shorturl = code_generator()
+        if self.shorturl is None or self.shorturl == "":
+            self.shorturl = code_generator()
         super(ShortenURL, self).save(*args, **kwargs)
 
     def __str__(self):
