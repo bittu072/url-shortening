@@ -3,12 +3,17 @@ from django.db import models
 from .utility import code_generator, create_shorturl
 
 # Create your models here.
+class ShortenURLManager(models.Manager):
+    def all(self, *args, **kargs):
+        qs = super(ShortenURLManager, self).all(*args, **kargs)
+        return qs
 
 class ShortenURL(models.Model):
     url = models.CharField(max_length=250,)
     shorturl = models.CharField(max_length=15, unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
     # if you already have some data with field and then you add another field in database
     # shorturl = models.CharField(max_length=15, null=True) # emty in database is ok
     # or
