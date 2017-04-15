@@ -6,6 +6,7 @@ from .utility import code_generator, create_shorturl
 class ShortenURLManager(models.Manager):
     def all(self, *args, **kargs):
         qs = super(ShortenURLManager, self).all(*args, **kargs)
+        qs = qs_main.filter(active=True)
         return qs
 
 class ShortenURL(models.Model):
@@ -19,6 +20,8 @@ class ShortenURL(models.Model):
     # or
     # shorturl = models.CharField(max_length=15, default='abcd')
     # or you can delete database and regenerate
+
+    object = ShortenURL
 
     def save(self, *args, **kwargs):
         if self.shorturl is None or self.shorturl == "":
