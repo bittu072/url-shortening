@@ -9,6 +9,15 @@ class ShortenURLManager(models.Manager):
         qs = qs_main.filter(active=True)
         return qs
 
+    def refresh_shorturls(self):
+        qs =  ShortenURL.objects.filter(id__gte=1)
+        new_url = 0
+        for q in qs:
+            q.shorturl = create_shorturl(q)
+            q.save()
+            new_url +=1
+        return "new urls made: {i}".format(i=new_url)
+
 class ShortenURL(models.Model):
     url = models.CharField(max_length=250,)
     shorturl = models.CharField(max_length=15, unique=True, blank=True)
@@ -21,7 +30,7 @@ class ShortenURL(models.Model):
     # shorturl = models.CharField(max_length=15, default='abcd')
     # or you can delete database and regenerate
 
-    object = ShortenURL
+    objects = ShortenURLManager()
 
     def save(self, *args, **kwargs):
         if self.shorturl is None or self.shorturl == "":
