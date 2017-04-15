@@ -14,6 +14,7 @@ class ShortenURLManager(models.Manager):
         new_url = 0
         for q in qs:
             q.shorturl = create_shorturl(q)
+            print (q.shorturl)
             q.save()
             new_url +=1
         return "new urls made: {i}".format(i=new_url)
