@@ -25,7 +25,7 @@ class ShortenURLManager(models.Manager):
 
 class ShortenURL(models.Model):
     url = models.CharField(max_length=250,)
-    shorturl = models.CharField(max_length=15, unique=True, blank=True)
+    shorturl = models.CharField(max_length=SHORTURL_MAX, unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)

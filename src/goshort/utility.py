@@ -1,14 +1,17 @@
+from django.conf import settings
 import random
 import string
 
-def code_generator(size=8, chars=string.ascii_lowercase + string.ascii_uppercase):
+SHORTURL_MIN = getattr(settings, "SHORTURL_MIN", 15)
+
+def code_generator(size=SHORTURL_MIN, chars=string.ascii_lowercase + string.ascii_uppercase):
     # new_code = ''
     # for i in range(size):
     #     new_code += random.choice(chars)
     # return new_code
     return ''.join(random.choice(chars) for i in range(size))
 
-def create_shorturl(instance, size=8):
+def create_shorturl(instance, size=SHORTURL_MIN):
     new_url = code_generator(size=size)
     klass = instance.__class__
     # this is similar to importing ShortenURL class from models.py
