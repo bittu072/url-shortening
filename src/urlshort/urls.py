@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from goshort.views import goshort_redirect_view, goshortCBview
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^),
 ]
