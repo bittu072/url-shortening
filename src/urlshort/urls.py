@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from goshort.views import goshort_redirect_view, goshortCBview
+from goshort.views import goshort_redirect_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +27,6 @@ urlpatterns = [
     # shorturlcode will be "xyz"
 
     # need to call view with as_view() method for the class based view
-    url(r'^b/(?P<shorturl>[\w-]+)/$',goshortCBview.as_view()),
+    # url(r'^b/(?P<shorturl>[\w-]+)/$',goshortCBview.as_view()),
 
 ]
