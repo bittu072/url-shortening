@@ -1,6 +1,10 @@
 from django.db import models
+from django.conf import settings
 
 from .utility import code_generator, create_shorturl
+
+SHORTURL_MAX = getattr(settings, "SHORTURL_MAX", 15)
+# in settings look for variable "SHORTURL_MAX" and if not found assign 15
 
 # Create your models here.
 class ShortenURLManager(models.Manager):
