@@ -9,7 +9,7 @@ SHORTURL_MAX = getattr(settings, "SHORTURL_MAX", 15)
 # Create your models here.
 class ShortenURLManager(models.Manager):
     def all(self, *args, **kargs):
-        qs = super(ShortenURLManager, self).all(*args, **kargs)
+        qs_main = super(ShortenURLManager, self).all(*args, **kargs)
         qs = qs_main.filter(active=True)
         return qs
 

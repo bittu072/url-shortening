@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import ShortenURL
 
@@ -7,11 +7,14 @@ from .models import ShortenURL
 # function base view
 def goshort_redirect_view(request, shorturl=None, *args, **kwargs):
     # obj = ShortenURL.objects.get(shorturl=shorturl)
-    obj_url = "NONE"
-    qs = ShortenURL.objects.filter(shorturl__iexact=shorturl.upper())
-    if qs.exists() and qs.count() == 1:
-        obj = qs.first()
-        obj_url = obj.url
+    obj = get_object_or_404(ShortenURL, shorturl=shorturl)
+
+    # OR
+    # obj_url = "NONE"
+    # qs = ShortenURL.objects.filter(shorturl__iexact=shorturl.upper())
+    # if qs.exists() and qs.count() == 1:
+    #     obj = qs.first()
+    #     obj_url = obj.url
 
     # OR
     # try:
@@ -19,7 +22,7 @@ def goshort_redirect_view(request, shorturl=None, *args, **kwargs):
     # except:
     #     obj = ShortenURL.objects.all().first(
 
-    return HttpResponse("hello..." + obj_url)
+    return HttpResponse("hello..." + obj.url)
 
 
 # class base view
