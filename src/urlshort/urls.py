@@ -21,7 +21,7 @@ from goshort.views import goshort_redirect_view
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # simply add view for the function based view
-    url(r'^a/(?P<shorturl>[\w-]+)/$',goshort_redirect_view),
+    url(r'^a/(?P<shorturl>[\w-]+){7,15}$',goshort_redirect_view),
     # here shorturlcode will be whatever is after a/ in url address bar
     # suppose url is entered "localhost:8000/a/xyz" then
     # shorturlcode will be "xyz"
