@@ -19,21 +19,21 @@ from django.contrib import admin
 from goshort.views import goshort_redirect_view
 
 # can also do
-from goshort import views
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^example/$',views.goshort_redirect_view),
-    ]
-
+# from goshort import views
 # urlpatterns = [
 #     url(r'^admin/', admin.site.urls),
-#     # simply add view for the function based view
-#     url(r'^a/(?P<shorturl>[\w-]+){7,15}$',goshort_redirect_view),
-#     # here shorturlcode will be whatever is after a/ in url address bar
-#     # suppose url is entered "localhost:8000/a/xyz" then
-#     # shorturlcode will be "xyz"
-#
-#     # need to call view with as_view() method for the class based view
-#     # url(r'^b/(?P<shorturl>[\w-]+)/$',goshortCBview.as_view()),
-#
-# ]
+#     url(r'^example/$',views.goshort_redirect_view),
+#     ]
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    # simply add view for the function based view
+    url(r'^a/(?P<shorturl>[\w-]+){7,15}$',goshort_redirect_view),
+    # here shorturlcode will be whatever is after a/ in url address bar
+    # suppose url is entered "localhost:8000/a/xyz" then
+    # shorturlcode will be "xyz"
+
+    # need to call view with as_view() method for the class based view
+    # url(r'^b/(?P<shorturl>[\w-]+)/$',goshortCBview.as_view()),
+
+]
