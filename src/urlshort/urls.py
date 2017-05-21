@@ -19,6 +19,8 @@ from django.contrib import admin
 from goshort.views import goshort_redirect_view
 
 # can also do
+# but this method is not recomended as it will import all hte function from views
+# where the methos which is used above calls only required view
 # from goshort import views
 # urlpatterns = [
 #     url(r'^admin/', admin.site.urls),
