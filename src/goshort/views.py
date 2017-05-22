@@ -22,6 +22,8 @@ def goshort_redirect_view(request, shorturl=None, *args, **kwargs):
     # except:
     #     obj = ShortenURL.objects.all().first(
 
+    # another way of returning
+    # return HttpResponse("hello {shrt}".formst(shrt=obj.url))
     return HttpResponse("hello..." + obj.url)
 
 
