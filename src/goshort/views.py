@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import ShortenURL
@@ -24,7 +24,8 @@ def goshort_redirect_view(request, shorturl=None, *args, **kwargs):
 
     # another way of returning
     # return HttpResponse("hello {shrt}".formst(shrt=obj.url))
-    return HttpResponse("hello..." + obj.url)
+    # return HttpResponse("hello..." + obj.url)
+    return HttpResponseRedirect("http://"+obj.url)
 
 
 # class base view
