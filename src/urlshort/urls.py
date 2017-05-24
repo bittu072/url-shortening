@@ -39,3 +39,8 @@ urlpatterns = [
     # url(r'^b/(?P<shorturl>[\w-]+)/$',goshortCBview.as_view()),
 
 ]
+
+
+
+# update following line in settings file
+# ALLOWED_HOSTS = ['www.trialshort.com']
