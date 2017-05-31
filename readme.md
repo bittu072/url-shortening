@@ -4,7 +4,7 @@
 This project is about developing a web application using Django that allows user to shorten their url.
 
 ### Library Requirement or additional Package:
-Django, python3, virtualenv
+Django, django-hosts, virtualenv, (python3)
 
 ### Thanks to
 https://www.codingforentrepreneurs.com/
