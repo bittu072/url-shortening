@@ -9,9 +9,12 @@ from .models import ShortenURL
 #     obj = get_object_or_404(ShortenURL, shorturl=shorturl)
 #     return HttpResponseRedirect("http://"+obj.url)
 
-
 # class base view
 class goshortCBview(View):
     def get(self, request, shorturl=None, *args, **kwargs):
         obj = get_object_or_404(ShortenURL, shorturl=shorturl)
         return HttpResponseRedirect("http://"+obj.url)
+
+class GoShortView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "index.html", {})
