@@ -8,7 +8,7 @@ from goshort.views import goshortCBview, GoShortView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', GoShortView.as_view()),
-    url(r'^a/(?P<shorturl>[\w-]+){7,15}/$', goshortCBview.as_view()),
+    url(r'^a/(?P<shorturl>[\w-]+)/$', goshortCBview.as_view()),
 ]
 
 
