@@ -18,3 +18,6 @@ class goshortCBview(View):
 class GoShortView(View):
     def get(self, request, *args, **kwargs):
         return render(request, "goshort/index.html", {})
+
+    def post(self, request, *args, **kwargs):
+        return render(request, "goshort/index.html", {})
