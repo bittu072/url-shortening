@@ -20,4 +20,6 @@ class GoShortView(View):
         return render(request, "goshort/index.html", {})
 
     def post(self, request, *args, **kwargs):
+        print (request.POST)
+        print (request.POST.get("url"))
         return render(request, "goshort/index.html", {})

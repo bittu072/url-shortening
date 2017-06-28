@@ -2,7 +2,7 @@
     <h1> Shorten the URL </h1>
 
     <form method="POST" action='.'> {% csrf_token %}
-        <input type='text' placeholder='enter url' />
+        <input name='url' type='text' placeholder='enter ur long url' />
         <input type="submit" value="Short it">
     </form>
 </div>
