@@ -1,8 +1,9 @@
 <div style='width:700 px; margin 0 auto;'>
-    <h1> Shorten the URL </h1>
+    <h1> {{title}} </h1>
 
     <form method="POST" action='.'> {% csrf_token %}
-        <input name='url' type='text' placeholder='enter ur long url' />
+        <!-- <input name='url' type='text' placeholder='enter ur long url' /> -->
+        {{ form.as_p }}
         <input type="submit" value="Short it">
     </form>
 </div>

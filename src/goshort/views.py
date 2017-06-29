@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import ShortenURL
+from .forms import URLSubmit
 
 # Create your views here.
 # function base view
@@ -17,9 +18,17 @@ class goshortCBview(View):
 
 class GoShortView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, "goshort/index.html", {})
+        the_form = URLSubmit()
+        context = {
+            "title": "Shorten the URL",
+            "form": the_form
+        }
+        return render(request, "goshort/index.html", context)
 
     def post(self, request, *args, **kwargs):
-        print (request.POST)
-        print (request.POST.get("url"))
+        # print (request.POST)
+        # print (request.POST.get("url"))
+        form = URLSubmit(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
         return render(request, "goshort/index.html", {})
