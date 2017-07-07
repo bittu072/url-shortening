@@ -7,3 +7,8 @@ class URLSubmit(forms.Form):
         cleaned_data = super(URLSubmit, self).clean()
         url = cleaned_data['url']
         print (url)
+
+    def clean_url(self):
+        url = self.cleaned_data['url']
+        print (url)
+        return url
