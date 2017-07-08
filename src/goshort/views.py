@@ -31,4 +31,9 @@ class GoShortView(View):
         form = URLSubmit(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
-        return render(request, "goshort/index.html", {})
+
+        context = {
+            "title": "Shorten the URL",
+            "form": form
+            }
+        return render(request, "goshort/index.html", context)
