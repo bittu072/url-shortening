@@ -13,4 +13,9 @@ class URLSubmit(forms.Form):
     def clean_url(self):
         url = self.cleaned_data['url']
         print (url)
+        url_validator = URLValidator()
+        try:
+            url_validator(url)
+        except:
+            raise forms.ValidationError("Invalid URL")
         return url
