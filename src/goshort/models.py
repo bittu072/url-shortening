@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 
 from .utility import code_generator, create_shorturl
+# from .validators import validate_url, validate_dot_com
 
 SHORTURL_MAX = getattr(settings, "SHORTURL_MAX", 15)
 # in settings look for variable "SHORTURL_MAX" and if not found assign 15
@@ -24,7 +25,8 @@ class ShortenURLManager(models.Manager):
         return "new urls made: {i}".format(i=new_url)
 
 class ShortenURL(models.Model):
-    url = models.CharField(max_length=250,)
+    url = models.CharField(max_length=250)
+    # url = models.CharField(max_length=250, validators=[validate_url])
     shorturl = models.CharField(max_length=SHORTURL_MAX, unique=True, blank=True)
     updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
